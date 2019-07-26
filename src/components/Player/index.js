@@ -17,27 +17,28 @@ import {
 
 const Player = ({
   player, play, pause, next, prev, currentSong,
-}) => player.current && (
-  <Container>
-    <CoverBackground source={{ uri: player.podcast.cover }} />
+}) => player.podcast
+  && player.current && (
+    <Container>
+      <CoverBackground source={{ uri: player.podcast.cover }} />
 
-    <SongInfo>
-      <SongTitle>{currentSong.title}</SongTitle>
-      <SongAuthor>{currentSong.artist}</SongAuthor>
-    </SongInfo>
+      <SongInfo>
+        <SongTitle>{currentSong.title}</SongTitle>
+        <SongAuthor>{currentSong.artist}</SongAuthor>
+      </SongInfo>
 
-    <Controls>
-      <ControlButton onPress={prev}>
-        <ControlIcon name="skip-previous" />
-      </ControlButton>
-      <ControlButton onPress={player.playing ? pause : play}>
-        <ControlIcon name={player.playing ? 'pause-circle-filled' : 'play-circle-filled'} />
-      </ControlButton>
-      <ControlButton onPress={next}>
-        <ControlIcon name="skip-next" />
-      </ControlButton>
-    </Controls>
-  </Container>
+      <Controls>
+        <ControlButton onPress={prev}>
+          <ControlIcon name="skip-previous" />
+        </ControlButton>
+        <ControlButton onPress={player.playing ? pause : play}>
+          <ControlIcon name={player.playing ? 'pause-circle-filled' : 'play-circle-filled'} />
+        </ControlButton>
+        <ControlButton onPress={next}>
+          <ControlIcon name="skip-next" />
+        </ControlButton>
+      </Controls>
+    </Container>
 );
 
 const mapStateToProps = state => ({
